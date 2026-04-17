@@ -65,7 +65,6 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      /* ✅ ELIMINADO: transform: scale(0.9) - ya no hay espacios */
     }
 
     /* HEADER - MORADO */
@@ -271,10 +270,10 @@
       width: 100%;
     }
 
-    /* PURPLE SECTION - ✅ MÁS EXTENDIDA HACIA ABAJO */
+    /* PURPLE SECTION */
     .purple-section {
       background: var(--yape-purple);
-      padding: 16px 16px 32px; /* ✅ Padding inferior aumentado */
+      padding: 16px 16px 32px;
       width: 100%;
     }
 
@@ -356,11 +355,11 @@
       background: var(--white);
       border-radius: 28px 28px 0 0;
       padding: 20px 16px calc(140px + var(--safe-area-bottom));
-      margin-top: -32px; /* ✅ Ajustado para que el morado se vea más */
+      margin-top: -32px;
       width: 100%;
     }
 
-    /* BALANCE & MOVEMENTS */
+    /* BALANCE & MOVEMENTS - ✅ SOMBRA AÑADIDA */
     .info-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -372,6 +371,7 @@
       justify-content: space-between;
       cursor: pointer;
       transition: background 0.2s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12); /* ✅ Sombra sutil añadida */
     }
 
     .info-card:active {
@@ -568,9 +568,34 @@
       position: relative;
     }
 
+    /* ✅ BOTÓN X PARA CERRAR RECIBO - PARTE SUPERIOR IZQUIERDA */
+    .confirm-close-btn {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--bg-gray);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--yape-purple);
+      cursor: pointer;
+      font-size: 1em;
+      z-index: 10;
+      transition: background 0.15s;
+    }
+
+    .confirm-close-btn:active {
+      background: var(--border);
+    }
+
     .confirm-header {
       text-align: center;
       margin-bottom: 16px;
+      padding-top: 10px; /* ✅ Espacio para el botón X */
     }
 
     .confirm-title {
@@ -696,26 +721,19 @@
       background: var(--border);
     }
 
-    /* PROMO BANNER */
+    /* PROMO BANNER - ✅ SIN TÍTULO "MÁS EN YAPE", CON SEPARACIÓN SUAVE */
     .promo-banner {
       width: 100%;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      margin-top: 8px; /* ✅ Separación sutil con el recibo */
     }
 
     .promo-banner img {
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    .promo-title {
-      color: white;
-      font-size: 1.1em;
-      font-weight: 600;
-      margin: 16px 0 12px;
-      text-align: center;
     }
 
     /* MODALS */
@@ -1113,7 +1131,7 @@
       border-radius: 10px;
     }
 
-    /* RESPONSIVE - SIN ESPACIOS */
+    /* RESPONSIVE */
     @media (max-width: 360px) {
       .services-grid {
         gap: 8px;
@@ -1137,6 +1155,9 @@
 </head>
 <body>
 
+<!-- ✅ AUDIO PARA NOTIFICACIÓN DE CAMPANA -->
+<audio id="notificationSound" src="https://github.com/BerMatMods/PROYECTO/raw/refs/heads/main/Audio/Audio%20cuando%20te%20yapean.mp3" preload="auto"></audio>
+
 <div class="container">
 
   <!-- Header -->
@@ -1152,7 +1173,8 @@
     </div>
     <div class="header-icons">
       <i class="fas fa-headset" onclick="showNotification('Soporte', 'Chatea con nosotros', 'info')"></i>
-      <i class="fas fa-bell" onclick="showNotification('Notificaciones', 'No tienes notificaciones nuevas', 'info')"></i>
+      <!-- ✅ CAMPANA CON AUDIO -->
+      <i class="fas fa-bell" onclick="playNotificationSound(); showNotification('Notificaciones', '𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍', 'info')"></i>
     </div>
   </div>
 
@@ -1164,7 +1186,7 @@
     <div class="menu-header">
       <img src="https://ui-avatars.com/api/?name=AnthZz+Berrocal&background=742384&color=fff" id="menuProfilePic" alt="Perfil" />
       <h3 id="menuUserName">AnthZz Berrocal</h3>
-      <p>BerMatcode</p>
+      <p>𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍</p>
     </div>
 
     <div class="menu-section">
@@ -1188,9 +1210,9 @@
 
     <div class="menu-section">
       <div class="menu-section-title">Servicios</div>
-      <div class="menu-item" onclick="showNotification('Créditos', 'S/ 66 666.66 disponibles', 'info'); toggleMenu();">
+      <div class="menu-item" onclick="showNotification('Cuenta', 'Eres Usuario Premium', 'info'); toggleMenu();">
         <i class="fas fa-hand-holding-usd"></i>
-        <div class="label">Créditos</div>
+        <div class="label">Cuenta</div>
       </div>
       <div class="menu-item" onclick="showNotification('Promociones', 'Revisa nuestras ofertas', 'info'); toggleMenu();">
         <i class="fas fa-percent"></i>
@@ -1261,11 +1283,11 @@
           </div>
           <div class="service-label">Aprobar compras</div>
         </div>
-        <div class="service-item" onclick="showNotification('Créditos', 'S/ 66 666.66 disponibles', 'info')">
+        <div class="service-item" onclick="showNotification('Cuenta', 'Eres Usuario Premium', 'info')">
           <div class="service-icon">
             <img src="https://i.postimg.cc/xTHdK9Hh/Screenshot-20250823-104933.jpg" />
           </div>
-          <div class="service-label">Créditos</div>
+          <div class="service-label">Cuenta</div>
         </div>
         <div class="service-item" onclick="showNotification('Tienda', 'Explora productos', 'info')">
           <div class="service-icon">
@@ -1314,10 +1336,10 @@
       <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel" id="mainCarousel">
-          <div class="carousel-slide"><img src="https://i.postimg.cc/85Mf0TWF/1755961504718.jpg" /></div>
-          <div class="carousel-slide"><img src="https://i.postimg.cc/85Mf0TWF/1755961504718.jpg" /></div>
-          <div class="carousel-slide"><img src="https://i.postimg.cc/85Mf0TWF/1755961504718.jpg" /></div>
-          <div class="carousel-slide"><img src="https://i.postimg.cc/85Mf0TWF/1755961504718.jpg" /></div>
+          <div class="carousel-slide"><img src="https://raw.githubusercontent.com/BerMatMods/PROYECTO/main/Anuncios/Anuncio%20de%20yape1.jpg" /></div>
+          <div class="carousel-slide"><img src="https://raw.githubusercontent.com/BerMatMods/PROYECTO/main/Anuncios/Anuncio%20de%20yape2.jpg" /></div>
+          <div class="carousel-slide"><img src="https://raw.githubusercontent.com/BerMatMods/PROYECTO/main/Anuncios/Anuncio%20de%20yape3.jpg" /></div>
+          <div class="carousel-slide"><img src="https://raw.githubusercontent.com/BerMatMods/PROYECTO/main/Anuncios/Anuncio%20de%20yape4.jpg" /></div>
         </div>
       </div>
     </div>
@@ -1360,13 +1382,13 @@
   <div class="modal-screen" id="sendModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('sendModal')"><i class="fas fa-times"></i></button>
-      <div class="modal-title">¿A quién vas a yapear?</div>
+      <div class="modal-title">YAPE ©BerMatMods</div>
       
       <label class="send-label">Número de celular</label>
       <input type="tel" id="sendPhone" placeholder="987 654 321" class="modal-input" maxlength="9" inputmode="numeric" />
       
       <label class="send-label">Nombre del destinatario</label>
-      <input type="text" id="sendName" placeholder="Nombre completo" value="AnthZz Berrocal" class="modal-input" />
+      <input type="text" id="sendName" placeholder="Nombre completo" value="BerMat-Mods" class="modal-input" />
       
       <label class="send-label">¿Cuánto?</label>
       <div class="send-amount-display">S/ <span id="sendAmount">0.00</span></div>
@@ -1383,6 +1405,11 @@
   <div class="confirm-container" id="confirmContainer">
     <div class="confirm-wrapper">
       <div class="confirm-card">
+        <!-- ✅ BOTÓN X PARA VOLVER A PANTALLA PRINCIPAL -->
+        <button class="confirm-close-btn" onclick="closeConfirm()" title="Volver">
+          <i class="fas fa-times"></i>
+        </button>
+        
         <button class="share-btn" onclick="showNotification('Compartir', 'Recibo compartido correctamente', 'success')">
           <i class="fas fa-share-alt"></i>
         </button>
@@ -1426,7 +1453,7 @@
         </div>
       </div>
 
-      <div class="promo-title">Más en Yape</div>
+      <!-- ✅ PROMO BANNER SIN TÍTULO "MÁS EN YAPE", CON SEPARACIÓN SUAVE -->
       <div class="promo-banner">
         <img src="https://i.postimg.cc/FRNhhv8k/1755961471955.jpg" alt="Promo" />
       </div>
@@ -1451,7 +1478,7 @@
       <input type="text" id="editName" value="AnthZz Berrocal" class="modal-input" />
       
       <label class="send-label">Apodo</label>
-      <input type="text" id="editNickname" value="BerMatcode" class="modal-input" />
+      <input type="text" id="editNickname" value="𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍" class="modal-input" />
       
       <label class="send-label">Email</label>
       <input type="email" id="editEmail" value="anthzz@gmail.com" class="modal-input" />
@@ -1490,23 +1517,23 @@
       <div class="app-logo">
         <i class="fas fa-wallet"></i>
       </div>
-      <div class="app-name">Yape Fake</div>
-      <div class="app-version">v2.5 • Demo</div>
+      <div class="app-name">YAPE</div>
+      <div class="app-version">V2.5 • última versión</div>
       
       <div class="dev-section">
-        <div class="dev-label">Desarrollado por</div>
+        <div class="dev-label">Desarrollado por:</div>
         <div class="dev-name">AnthZz Berrocal</div>
-        <div class="dev-handle">@BerMatCode</div>
+        <div class="dev-handle">𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍</div>
       </div>
       
       <div class="features-list">
         <div class="feature-item">
           <i class="fas fa-check-circle"></i>
-          <span>Simulación de envíos y recepción</span>
+          <span>Función de envíos y recepción</span>
         </div>
         <div class="feature-item">
           <i class="fas fa-check-circle"></i>
-          <span>Escaneo de QR simulado</span>
+          <span>Escaneo de QR</span>
         </div>
         <div class="feature-item">
           <i class="fas fa-check-circle"></i>
@@ -1523,10 +1550,10 @@
       </div>
       
       <div class="copyright">
-        <strong>⚠️ Aplicación de demostración</strong><br>
-        No realiza transacciones reales.<br>
-        Solo para fines educativos y de diseño.<br><br>
-        © 2026 BerMatCode • Todos los derechos reservados
+        <strong>👾App Modificada👾</strong><br>
+        No me hago responsable del mal uso que puedan dar.<br>
+        Solo para fines educativos.<br><br>
+        ©2022-2026 BerMatCode • Desarrollador oficial
       </div>
     </div>
   </div>
@@ -1551,7 +1578,7 @@
   // ===== DATA MANAGEMENT =====
   let userData = {
     name: 'AnthZz Berrocal',
-    nickname: 'BerMatcode',
+    nickname: '𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍',
     email: 'anthzzhacks@gmail.com',
     phone: '+51 987 654 321',
     photo: 'https://ui-avatars.com/api/?name=AnthZz+Berrocal&background=742384&color=fff',
@@ -1628,6 +1655,15 @@
       notification.classList.remove('show');
       setTimeout(() => notification.remove(), 300);
     }, 3000);
+  }
+
+  // ✅ FUNCIÓN PARA REPRODUCIR AUDIO DE NOTIFICACIÓN
+  function playNotificationSound() {
+    const audio = document.getElementById('notificationSound');
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch(e => console.log('Audio play failed:', e));
+    }
   }
 
   // ===== MENU FUNCTIONS =====
@@ -1816,8 +1852,11 @@
     
     // Add to movements
     addMovement(name, phone, amount);
-    
-    // ELIMINADA NOTIFICACIÓN AL YAPEAR
+  }
+
+  // ✅ FUNCIÓN PARA CERRAR PANTALLA DE CONFIRMACIÓN Y VOLVER AL INICIO
+  function closeConfirm() {
+    document.getElementById('confirmContainer').classList.remove('active');
   }
 
   function addMovement(name, phone, amount) {
@@ -1958,10 +1997,10 @@
     carousel.scrollTo({ left: scrollPos, behavior: 'smooth' });
   }, 4000);
 
-  // ===== INITIALIZATION =====
+  // ===== INITIALIZATION - ✅ ELIMINADA BIENVENIDA QUE SE VEÍA MAL =====
   window.addEventListener('load', () => {
     loadData();
-    showNotification('Bienvenido', `Hola, ${userData.name.split(' ')[0]}`, 'success');
+    // ✅ Welcome notification removed as requested
   });
 
   // Prevent zoom on inputs
