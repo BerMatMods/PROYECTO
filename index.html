@@ -67,6 +67,177 @@
       overflow: hidden;
     }
 
+    /* LOGIN SCREEN - AJUSTADO PARA CELULAR */
+    .login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      background: linear-gradient(180deg, var(--yape-purple) 0%, var(--yape-purple) 55%, var(--white) 55%, var(--white) 100%);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: calc(40px + var(--safe-area-top)) 16px 16px;
+    }
+
+    .login-qr-container {
+      background: white;
+      padding: 12px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .login-qr {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .login-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .login-option {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 10px 12px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-width: 70px;
+    }
+
+    .login-option:active {
+      transform: scale(0.95);
+      background: rgba(255,255,255,0.25);
+    }
+
+    .login-option i {
+      font-size: 1.3em;
+      color: white;
+    }
+
+    .login-option span {
+      color: white;
+      font-size: 0.65em;
+      text-align: center;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .login-keypad-container {
+      background: white;
+      border-radius: 24px 24px 0 0;
+      padding: 28px 16px calc(16px + var(--safe-area-bottom));
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+    }
+
+    .login-title {
+      font-size: 1.1em;
+      color: var(--yape-purple);
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .login-pin-display {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+      justify-content: center;
+    }
+
+    .pin-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg-gray);
+      border: 2px solid var(--yape-purple);
+      transition: all 0.2s;
+    }
+
+    .pin-dot.filled {
+      background: var(--yape-purple);
+    }
+
+    .pin-dot.error {
+      background: #ef4444;
+      border-color: #ef4444;
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .keypad-btn {
+      aspect-ratio: 1.4;
+      background: var(--bg-gray);
+      border: none;
+      border-radius: 10px;
+      font-size: 1.3em;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .keypad-btn:active {
+      background: var(--yape-purple);
+      color: white;
+      transform: scale(0.95);
+    }
+
+    .keypad-btn.fingerprint {
+      font-size: 1.1em;
+    }
+
+    .keypad-btn.clear {
+      font-size: 0.9em;
+    }
+
+    .keypad-btn.empty {
+      background: transparent;
+      cursor: default;
+    }
+
+    .keypad-btn.empty:active {
+      background: transparent;
+      transform: none;
+    }
+
     /* HEADER - MORADO */
     .top-bar {
       display: flex;
@@ -136,7 +307,7 @@
       cursor: pointer;
     }
 
-    /* MENU SIDEBAR */
+    /* MENU SIDEBAR - ACTUALIZADO */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -159,15 +330,15 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 85%;
-      max-width: 320px;
+      width: 100%;
+      max-width: 400px;
       height: 100%;
       height: 100dvh;
       background: var(--white);
       z-index: 100;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
-      padding: calc(60px + var(--safe-area-top)) 16px 20px;
+      padding: calc(20px + var(--safe-area-top)) 0 20px;
       overflow-y: auto;
       box-shadow: 2px 0 20px rgba(0,0,0,0.2);
     }
@@ -177,55 +348,105 @@
     }
 
     .menu-header {
-      text-align: center;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--border);
+      padding: 0 16px 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
     }
 
-    .menu-header img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 0 auto 12px;
-      border: 3px solid var(--yape-purple);
-      object-fit: cover;
-      background: var(--bg-gray);
-    }
-
-    .menu-header h3 {
-      color: var(--yape-purple);
-      font-size: 1.15em;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .menu-header p {
-      color: var(--text-secondary);
-      font-size: 0.9em;
-    }
-
-    .menu-section {
-      margin-bottom: 20px;
-    }
-
-    .menu-section-title {
-      font-size: 0.8em;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      font-weight: 600;
-      margin: 16px 0 8px 8px;
-      letter-spacing: 0.5px;
-    }
-
-    .menu-item {
-      padding: 14px 12px;
+    .menu-header-top {
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .menu-back {
+      font-size: 1.3em;
+      color: var(--yape-purple);
       cursor: pointer;
-      border-radius: 10px;
+    }
+
+    .menu-title-section {
+      flex: 1;
+    }
+
+    .menu-title {
+      font-size: 1.4em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .menu-subtitle {
+      font-size: 0.85em;
+      color: var(--text-secondary);
+    }
+
+    .menu-help {
+      color: var(--yape-purple);
+      font-size: 1.2em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .menu-profile-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--bg-gray);
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .menu-profile-pic {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid var(--yape-purple);
+      object-fit: cover;
+      background: var(--white);
+    }
+
+    .menu-profile-info {
+      flex: 1;
+    }
+
+    .menu-profile-name {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .menu-profile-nickname {
+      font-size: 0.85em;
+      color: var(--text-secondary);
+    }
+
+    .menu-section {
+      margin-bottom: 8px;
+      padding: 0 8px;
+    }
+
+    .menu-section-label {
+      font-size: 0.85em;
+      color: var(--text-secondary);
+      font-weight: 600;
+      padding: 12px 8px 8px;
+      text-transform: uppercase;
+    }
+
+    .menu-item {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
       transition: background 0.2s;
+      border-radius: 8px;
       margin-bottom: 2px;
     }
 
@@ -240,26 +461,85 @@
       text-align: center;
     }
 
-    .menu-item .content {
-      flex: 1;
-    }
-
     .menu-item .label {
+      flex: 1;
       font-weight: 500;
       font-size: 0.95em;
       color: var(--text);
     }
 
-    .menu-item .desc {
-      font-size: 0.8em;
-      color: var(--text-secondary);
-      margin-top: 2px;
+    .menu-item .badge {
+      background: #fbbd00;
+      color: #000;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75em;
+      font-weight: 600;
     }
 
-    .menu-item .value {
-      font-weight: 600;
-      color: var(--yape-purple);
+    .menu-item .arrow {
+      color: var(--text-secondary);
       font-size: 0.9em;
+    }
+
+    .menu-info-section {
+      padding: 16px;
+      margin: 12px 8px;
+      background: var(--bg-gray);
+      border-radius: 12px;
+    }
+
+    .menu-info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9em;
+    }
+
+    .menu-info-row:last-child {
+      border-bottom: none;
+    }
+
+    .menu-info-label {
+      color: var(--text-secondary);
+    }
+
+    .menu-info-value {
+      font-weight: 600;
+      color: var(--text);
+      text-align: right;
+    }
+
+    .menu-footer-section {
+      padding: 8px;
+      margin-top: 8px;
+    }
+
+    .menu-footer-item {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .menu-footer-item:active {
+      background: var(--bg-gray);
+    }
+
+    .menu-footer-item i {
+      color: var(--yape-purple);
+      font-size: 1.2em;
+      width: 24px;
+    }
+
+    .menu-footer-item .label {
+      font-weight: 500;
+      font-size: 0.95em;
+      color: var(--text);
     }
 
     /* CONTENT SCROLL */
@@ -359,7 +639,7 @@
       width: 100%;
     }
 
-    /* BALANCE & MOVEMENTS - ✅ SOMBRA AÑADIDA */
+    /* BALANCE & MOVEMENTS */
     .info-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -371,7 +651,7 @@
       justify-content: space-between;
       cursor: pointer;
       transition: background 0.2s;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12); /* ✅ Sombra sutil añadida */
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
     }
 
     .info-card:active {
@@ -428,6 +708,12 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .movement-item:active {
+      background: var(--bg-gray);
     }
 
     .movement-icon {
@@ -528,7 +814,7 @@
       box-shadow: 0 2px 8px rgba(45, 212, 191, 0.3);
     }
 
-    /* CONFIRMATION SCREEN */
+    /* CONFIRMATION & RECEIPT SCREEN */
     .confirm-container {
       display: none;
       position: fixed;
@@ -568,7 +854,6 @@
       position: relative;
     }
 
-    /* ✅ BOTÓN X PARA CERRAR RECIBO - PARTE SUPERIOR IZQUIERDA */
     .confirm-close-btn {
       position: absolute;
       top: 16px;
@@ -595,7 +880,7 @@
     .confirm-header {
       text-align: center;
       margin-bottom: 16px;
-      padding-top: 10px; /* ✅ Espacio para el botón X */
+      padding-top: 10px;
     }
 
     .confirm-title {
@@ -721,13 +1006,13 @@
       background: var(--border);
     }
 
-    /* PROMO BANNER - ✅ SIN TÍTULO "MÁS EN YAPE", CON SEPARACIÓN SUAVE */
+    /* PROMO BANNER */
     .promo-banner {
       width: 100%;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: var(--shadow);
-      margin-top: 8px; /* ✅ Separación sutil con el recibo */
+      margin-top: 8px;
     }
 
     .promo-banner img {
@@ -840,7 +1125,7 @@
       color: white;
     }
 
-    /* INFO MODAL MEJORADO */
+    /* INFO MODAL */
     #infoModal .modal-content {
       text-align: center;
       padding: 28px 20px;
@@ -1145,7 +1430,6 @@
       }
     }
 
-    /* EVITAR ZOOM EN IOS */
     @supports (-webkit-touch-callout: none) {
       .modal-input, .send-amount-display {
         font-size: 16px;
@@ -1155,10 +1439,59 @@
 </head>
 <body>
 
-<!-- ✅ AUDIO PARA NOTIFICACIÓN DE CAMPANA -->
+<!-- AUDIO PARA NOTIFICACIÓN -->
 <audio id="notificationSound" src="https://github.com/BerMatMods/PROYECTO/raw/refs/heads/main/Audio/Audio%20cuando%20te%20yapean.mp3" preload="auto"></audio>
 
-<div class="container">
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-qr-container">
+    <img src="https://raw.githubusercontent.com/BerMatMods/PROYECTO/main/Anuncios/QR%20logo.png" alt="QR Yape" class="login-qr" />
+  </div>
+  
+  <div class="login-options">
+    <div class="login-option" onclick="showForgotPassword()">
+      <i class="fas fa-lock"></i>
+      <span>Olvido de clave</span>
+    </div>
+    <div class="login-option" onclick="showChangeNumber()">
+      <i class="fas fa-mobile-alt"></i>
+      <span>Cambio de número</span>
+    </div>
+    <div class="login-option" onclick="showHelp()">
+      <i class="fas fa-headset"></i>
+      <span>Ayuda</span>
+    </div>
+  </div>
+  
+  <div class="login-keypad-container">
+    <div class="login-title">Ingresa tu clave</div>
+    <div class="login-pin-display" id="pinDisplay">
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+    </div>
+    
+    <div class="keypad">
+      <button class="keypad-btn" onclick="addPinDigit('2')">2</button>
+      <button class="keypad-btn" onclick="addPinDigit('3')">3</button>
+      <button class="keypad-btn" onclick="addPinDigit('4')">4</button>
+      <button class="keypad-btn" onclick="addPinDigit('6')">6</button>
+      <button class="keypad-btn" onclick="addPinDigit('0')">0</button>
+      <button class="keypad-btn" onclick="addPinDigit('9')">9</button>
+      <button class="keypad-btn" onclick="addPinDigit('8')">8</button>
+      <button class="keypad-btn" onclick="addPinDigit('1')">1</button>
+      <button class="keypad-btn" onclick="addPinDigit('5')">5</button>
+      <button class="keypad-btn fingerprint"><i class="fas fa-fingerprint"></i></button>
+      <button class="keypad-btn" onclick="addPinDigit('7')">7</button>
+      <button class="keypad-btn clear" onclick="clearPinDigit()"><i class="fas fa-backspace"></i></button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="mainContainer" style="display: none;">
 
   <!-- Header -->
   <div class="top-bar">
@@ -1173,82 +1506,137 @@
     </div>
     <div class="header-icons">
       <i class="fas fa-headset" onclick="showNotification('Soporte', 'Chatea con nosotros', 'info')"></i>
-      <!-- ✅ CAMPANA CON AUDIO -->
-      <i class="fas fa-bell" onclick="playNotificationSound(); showNotification('Notificaciones', '𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍', 'info')"></i>
+      <i class="fas fa-bell" onclick="playNotificationSound(); showNotification('Notificaciones', '𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞-', 'info')"></i>
     </div>
   </div>
 
   <!-- Menu Overlay -->
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
   
-  <!-- Menu Sidebar -->
+  <!-- Menu Sidebar - ACTUALIZADO -->
   <div class="menu-sidebar" id="menuSidebar">
     <div class="menu-header">
-      <img src="https://ui-avatars.com/api/?name=AnthZz+Berrocal&background=742384&color=fff" id="menuProfilePic" alt="Perfil" />
-      <h3 id="menuUserName">AnthZz Berrocal</h3>
-      <p>𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍</p>
+      <div class="menu-header-top">
+        <div class="menu-back" onclick="toggleMenu()">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="menu-title-section">
+          <div class="menu-title">Mi Perfil</div>
+          <div class="menu-subtitle">Yape es gratis</div>
+        </div>
+        <div class="menu-help" onclick="showNotification('Ayuda', 'Centro de ayuda', 'info')">
+          <i class="fas fa-headset"></i>
+          <span>Ayuda</span>
+        </div>
+      </div>
+      
+      <div class="menu-profile-section">
+        <img src="https://ui-avatars.com/api/?name=AnthZz+Berrocal&background=742384&color=fff" class="menu-profile-pic" id="menuProfilePic" alt="Perfil" />
+        <div class="menu-profile-info">
+          <div class="menu-profile-name" id="menuUserName">AnthZz Berrocal</div>
+          <div class="menu-profile-nickname" id="menuUserNickname">𖤍_𝐂𝐨𝐝</div>
+        </div>
+      </div>
     </div>
 
+    <!-- Mi cuenta -->
     <div class="menu-section">
-      <div class="menu-section-title">Cuenta</div>
+      <div class="menu-section-label">Mi cuenta</div>
       <div class="menu-item" onclick="openModal('profileModal'); toggleMenu();">
         <i class="fas fa-user-edit"></i>
-        <div class="content">
-          <div class="label">Editar Perfil</div>
-          <div class="desc">Cambia tu información</div>
-        </div>
+        <div class="label">Mis datos</div>
+        <i class="fas fa-chevron-right arrow"></i>
+      </div>
+      <div class="menu-item" onclick="showBlockedFeature(); toggleMenu();">
+        <i class="fas fa-lock"></i>
+        <div class="label">Cambiar mi clave</div>
+        <i class="fas fa-chevron-right arrow"></i>
       </div>
       <div class="menu-item" onclick="openModal('editBalanceModal'); toggleMenu();">
         <i class="fas fa-wallet"></i>
-        <div class="content">
-          <div class="label">Editar Saldo</div>
-          <div class="desc">Saldo actual</div>
-        </div>
-        <div class="value" id="menuBalance">S/ 666.66</div>
+        <div class="label">Editar Saldo</div>
+        <div class="value" style="font-weight: 600; color: var(--yape-purple);" id="menuBalance">S/ 666.66</div>
+      </div>
+      <div class="menu-item" onclick="showNotification('Mi QR', 'Tu código QR', 'info'); toggleMenu();">
+        <i class="fas fa-qrcode"></i>
+        <div class="label">Mi QR</div>
+        <i class="fas fa-chevron-right arrow"></i>
+      </div>
+      <div class="menu-item" onclick="showNotification('Mis direcciones', 'Direcciones guardadas', 'info'); toggleMenu();">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="label">Mis direcciones</div>
+        <i class="fas fa-chevron-right arrow"></i>
+      </div>
+      <div class="menu-item" onclick="showNotification('Eliminar cuenta', 'Función próximamente', 'info'); toggleMenu();">
+        <i class="fas fa-trash-alt"></i>
+        <div class="label">Eliminar mi cuenta</div>
+        <i class="fas fa-chevron-right arrow"></i>
       </div>
     </div>
 
+    <!-- Ajustes -->
     <div class="menu-section">
-      <div class="menu-section-title">Servicios</div>
-      <div class="menu-item" onclick="showNotification('Cuenta', 'Eres Usuario Premium', 'info'); toggleMenu();">
-        <i class="fas fa-hand-holding-usd"></i>
-        <div class="label">Cuenta</div>
+      <div class="menu-section-label">Ajustes</div>
+      <div class="menu-item" onclick="showNotification('Biometría digital', 'Activar biometría', 'info'); toggleMenu();">
+        <i class="fas fa-fingerprint"></i>
+        <div class="label">Biometría digital</div>
+        <span class="badge">Activar</span>
       </div>
-      <div class="menu-item" onclick="showNotification('Promociones', 'Revisa nuestras ofertas', 'info'); toggleMenu();">
-        <i class="fas fa-percent"></i>
-        <div class="label">Promociones</div>
+      <div class="menu-item" onclick="showNotification('Compras por internet', 'Configurar compras', 'info'); toggleMenu();">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="label">Compras por internet</div>
+        <i class="fas fa-chevron-right arrow"></i>
       </div>
-      <div class="menu-item" onclick="showNotification('Tienda', 'Explora productos', 'info'); toggleMenu();">
-        <i class="fas fa-store"></i>
-        <div class="label">Tienda</div>
-      </div>
-    </div>
-
-    <div class="menu-section">
-      <div class="menu-section-title">Configuración</div>
-      <div class="menu-item" onclick="showNotification('Seguridad', 'PIN y huella activados', 'info'); toggleMenu();">
-        <i class="fas fa-shield-alt"></i>
-        <div class="label">Seguridad</div>
-      </div>
-      <div class="menu-item" onclick="showNotification('Notificaciones', 'Activadas', 'info'); toggleMenu();">
-        <i class="fas fa-bell"></i>
-        <div class="label">Notificaciones</div>
-      </div>
-    </div>
-
-    <div class="menu-section">
-      <div class="menu-section-title">Ayuda</div>
-      <div class="menu-item" onclick="showNotification('Soporte', 'Chatea con nosotros', 'info'); toggleMenu();">
-        <i class="fas fa-headset"></i>
-        <div class="label">Soporte</div>
-      </div>
-      <div class="menu-item" onclick="showNotification('Ayuda', 'Centro de ayuda', 'info'); toggleMenu();">
-        <i class="fas fa-question-circle"></i>
-        <div class="label">Ayuda</div>
-      </div>
-      <div class="menu-item" onclick="openModal('infoModal'); toggleMenu();">
+      <div class="menu-item" onclick="showNotification('Confirmación de yapeo alto', 'Configurar montos', 'info'); toggleMenu();">
         <i class="fas fa-info-circle"></i>
-        <div class="label">Información</div>
+        <div class="label">Confirmación de yapeo alto</div>
+        <i class="fas fa-chevron-right arrow"></i>
+      </div>
+      <div class="menu-item" onclick="showNotification('Límites transaccionales', 'Ver límites', 'info'); toggleMenu();">
+        <i class="fas fa-chart-bar"></i>
+        <div class="label">Límites Transaccionales</div>
+        <i class="fas fa-chevron-right arrow"></i>
+      </div>
+      <div class="menu-item" onclick="showNotification('Notificaciones', 'Configurar notificaciones', 'info'); toggleMenu();">
+        <i class="fas fa-bell"></i>
+        <div class="label">Notificaciones por yapeo</div>
+        <i class="fas fa-chevron-right arrow"></i>
+      </div>
+    </div>
+
+    <!-- Información de la app -->
+    <div class="menu-info-section">
+      <div class="menu-info-row">
+        <span class="menu-info-label">Versión Yape:</span>
+        <span class="menu-info-value" id="menuVersion">3.61.5</span>
+      </div>
+      <div class="menu-info-row">
+        <span class="menu-info-label">Tipo de cuenta:</span>
+        <span class="menu-info-value" id="menuAccountType">Yape con DNI</span>
+      </div>
+      <div class="menu-info-row">
+        <span class="menu-info-label">Banco:</span>
+        <span class="menu-info-value">Banco de Crédito del Perú</span>
+      </div>
+      <div class="menu-info-row">
+        <span class="menu-info-label">RUC:</span>
+        <span class="menu-info-value" id="menuRUC" onclick="openModal('editRucModal'); toggleMenu();" style="cursor: pointer; color: var(--yape-purple);">20100047218</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="menu-footer-section">
+      <div class="menu-footer-item" onclick="showNotification('Términos y condiciones', 'Leer términos', 'info'); toggleMenu();">
+        <i class="fas fa-file-alt"></i>
+        <div class="label">Términos y condiciones</div>
+      </div>
+      <div class="menu-footer-item" onclick="showNotification('Política de privacidad', 'Leer política', 'info'); toggleMenu();">
+        <i class="fas fa-shield-alt"></i>
+        <div class="label">Política de privacidad</div>
+      </div>
+      <div class="menu-footer-item" onclick="showNotification('Cerrar sesión', 'Sesión cerrada', 'success'); toggleMenu();">
+        <i class="fas fa-sign-out-alt"></i>
+        <div class="label">Cerrar sesión</div>
       </div>
     </div>
   </div>
@@ -1259,7 +1647,7 @@
     <div class="purple-section">
       <!-- Services -->
       <div class="services-grid">
-        <div class="service-item" onclick="startScan()">
+        <div class="service-item" onclick="showNotification('Recargar celular', 'Próximamente disponible', 'info')">
           <div class="service-icon">
             <img src="https://i.postimg.cc/9FzMzGFm/Screenshot-20250823-104637.jpg" />
           </div>
@@ -1405,7 +1793,6 @@
   <div class="confirm-container" id="confirmContainer">
     <div class="confirm-wrapper">
       <div class="confirm-card">
-        <!-- ✅ BOTÓN X PARA VOLVER A PANTALLA PRINCIPAL -->
         <button class="confirm-close-btn" onclick="closeConfirm()" title="Volver">
           <i class="fas fa-times"></i>
         </button>
@@ -1453,7 +1840,63 @@
         </div>
       </div>
 
-      <!-- ✅ PROMO BANNER SIN TÍTULO "MÁS EN YAPE", CON SEPARACIÓN SUAVE -->
+      <div class="promo-banner">
+        <img src="https://i.postimg.cc/FRNhhv8k/1755961471955.jpg" alt="Promo" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Receipt Screen -->
+  <div class="confirm-container" id="receiptContainer">
+    <div class="confirm-wrapper">
+      <div class="confirm-card">
+        <button class="confirm-close-btn" onclick="closeReceipt()" title="Cerrar">
+          <i class="fas fa-times"></i>
+        </button>
+        
+        <button class="share-btn" onclick="showNotification('Compartir', 'Recibo compartido correctamente', 'success')">
+          <i class="fas fa-share-alt"></i>
+        </button>
+        
+        <div class="confirm-header">
+          <div class="confirm-title">Recibo de Transacción</div>
+          <div class="confirm-amount">S/ <span id="receiptAmount">0.00</span></div>
+          <div class="confirm-name" id="receiptName">Nombre</div>
+          <div class="confirm-datetime">
+            <span><i class="fas fa-calendar"></i> <span id="receiptDate">-</span></span>
+            <span><i class="fas fa-clock"></i> <span id="receiptTime">-</span></span>
+          </div>
+        </div>
+
+        <div class="security-section">
+          <div class="security-label">
+            CÓDIGO DE SEGURIDAD
+            <i class="fas fa-info-circle" style="color: var(--yape-turquoise);"></i>
+          </div>
+          <div class="security-code">
+            <div class="security-digit" id="receiptCode1">0</div>
+            <div class="security-digit" id="receiptCode2">0</div>
+            <div class="security-digit" id="receiptCode3">0</div>
+          </div>
+        </div>
+
+        <div class="transaction-details">
+          <div class="detail-label">DATOS DE LA TRANSACCIÓN</div>
+          <div class="detail-row">
+            <span class="detail-key">Nro. de celular</span>
+            <span class="detail-value" id="receiptPhone">*** *** ***</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-key">Destino</span>
+            <span class="detail-value">Yape</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-key">Nro. de operación</span>
+            <span class="detail-value" id="receiptOp">-</span>
+          </div>
+        </div>
+      </div>
+
       <div class="promo-banner">
         <img src="https://i.postimg.cc/FRNhhv8k/1755961471955.jpg" alt="Promo" />
       </div>
@@ -1478,7 +1921,7 @@
       <input type="text" id="editName" value="AnthZz Berrocal" class="modal-input" />
       
       <label class="send-label">Apodo</label>
-      <input type="text" id="editNickname" value="𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍" class="modal-input" />
+      <input type="text" id="editNickname" value="𖤍𝐫𝐌𝐭_𝐨𖤍" class="modal-input" />
       
       <label class="send-label">Email</label>
       <input type="email" id="editEmail" value="anthzz@gmail.com" class="modal-input" />
@@ -1489,6 +1932,22 @@
       <div class="modal-buttons">
         <button class="modal-btn cancel" onclick="closeModal('profileModal')">Cancelar</button>
         <button class="modal-btn confirm" onclick="saveProfile()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit RUC Modal -->
+  <div class="modal-screen" id="editRucModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('editRucModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-title">Editar RUC</div>
+      
+      <label class="send-label">Nuevo RUC</label>
+      <input type="text" id="editRucInput" value="20100047218" maxlength="11" class="modal-input" inputmode="numeric" />
+      
+      <div class="modal-buttons">
+        <button class="modal-btn cancel" onclick="closeModal('editRucModal')">Cancelar</button>
+        <button class="modal-btn confirm" onclick="saveRuc()">Actualizar RUC</button>
       </div>
     </div>
   </div>
@@ -1509,7 +1968,20 @@
     </div>
   </div>
 
-  <!-- Info Modal Mejorado -->
+  <!-- Clear History Modal -->
+  <div class="modal-screen" id="clearHistoryModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('clearHistoryModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-title">Borrar Historial</div>
+      <p style="text-align: center; color: var(--text-secondary); margin: 16px 0;">¿Estás seguro de que deseas eliminar todos tus movimientos? Esta acción no se puede deshacer.</p>
+      <div class="modal-buttons">
+        <button class="modal-btn cancel" onclick="closeModal('clearHistoryModal')">Cancelar</button>
+        <button class="modal-btn confirm" onclick="clearHistory()" style="background: #ef4444;">Borrar todo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Modal -->
   <div class="modal-screen" id="infoModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('infoModal')"><i class="fas fa-times"></i></button>
@@ -1523,7 +1995,7 @@
       <div class="dev-section">
         <div class="dev-label">Desarrollado por:</div>
         <div class="dev-name">AnthZz Berrocal</div>
-        <div class="dev-handle">𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍</div>
+        <div class="dev-handle">𖤍𝐫𝐌𝐭_𝐨</div>
       </div>
       
       <div class="features-list">
@@ -1575,6 +2047,76 @@
 </div>
 
 <script>
+  // ===== LOGIN SYSTEM =====
+  const CORRECT_PIN = '101123';
+  let currentPin = '';
+  
+  function addPinDigit(digit) {
+    if (currentPin.length < 6) {
+      currentPin += digit;
+      updatePinDisplay();
+      
+      if (currentPin.length === 6) {
+        setTimeout(checkPin, 300);
+      }
+    }
+  }
+  
+  function clearPinDigit() {
+    if (currentPin.length > 0) {
+      currentPin = currentPin.slice(0, -1);
+      updatePinDisplay();
+    }
+  }
+  
+  function updatePinDisplay() {
+    const dots = document.querySelectorAll('.pin-dot');
+    dots.forEach((dot, index) => {
+      if (index < currentPin.length) {
+        dot.classList.add('filled');
+      } else {
+        dot.classList.remove('filled');
+      }
+      dot.classList.remove('error');
+    });
+  }
+  
+  function checkPin() {
+    if (currentPin === CORRECT_PIN) {
+      // PIN correcto - mostrar app principal
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('mainContainer').style.display = 'flex';
+      loadData();
+    } else {
+      // PIN incorrecto - mostrar error
+      const dots = document.querySelectorAll('.pin-dot');
+      dots.forEach(dot => dot.classList.add('error'));
+      
+      setTimeout(() => {
+        currentPin = '';
+        updatePinDisplay();
+      }, 500);
+      
+      showNotification('❌ Clave incorrecta', 'Intenta de nuevo', 'error');
+    }
+  }
+  
+  function showForgotPassword() {
+    showNotification('Olvido de clave', 'Esta opción está bloqueada por el desarrollador', 'info');
+  }
+  
+  function showChangeNumber() {
+    showNotification('Cambio de número', 'Esta opción está bloqueada por el desarrollador', 'info');
+  }
+  
+  function showHelp() {
+    showNotification('Ayuda', 'Contacta al desarrollador: 𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍', 'info');
+  }
+  
+  function showBlockedFeature() {
+    showNotification('⚠️ Función bloqueada', 'Esta opción está bloqueada por el desarrollador', 'error');
+  }
+
   // ===== DATA MANAGEMENT =====
   let userData = {
     name: 'AnthZz Berrocal',
@@ -1583,13 +2125,13 @@
     phone: '+51 987 654 321',
     photo: 'https://ui-avatars.com/api/?name=AnthZz+Berrocal&background=742384&color=fff',
     balance: 666.66,
-    balanceVisible: false
+    balanceVisible: false,
+    ruc: '875475647218'
   };
 
   let movements = [];
   let movementsVisible = false;
 
-  // Load data from localStorage
   function loadData() {
     const savedData = localStorage.getItem('yape_userData');
     const savedMovements = localStorage.getItem('yape_movements');
@@ -1604,35 +2146,31 @@
     updateUI();
   }
 
-  // Save data to localStorage
   function saveData() {
     localStorage.setItem('yape_userData', JSON.stringify(userData));
     localStorage.setItem('yape_movements', JSON.stringify(movements));
   }
 
-  // Update UI with current data
   function updateUI() {
-    // Update name
     const firstName = userData.name.split(' ')[0];
     document.getElementById('greetingName').textContent = `Hola, ${firstName}`;
     document.getElementById('menuUserName').textContent = userData.name;
+    document.getElementById('menuUserNickname').textContent = userData.nickname;
     
-    // Update photo
     document.getElementById('profilePic').src = userData.photo;
     document.getElementById('menuProfilePic').src = userData.photo;
     
-    // Update balance
     document.getElementById('menuBalance').textContent = 'S/ ' + userData.balance.toFixed(2);
+    document.getElementById('menuRUC').textContent = userData.ruc;
     updateBalanceDisplay();
     
-    // Update form values
     document.getElementById('editName').value = userData.name;
     document.getElementById('editNickname').value = userData.nickname;
     document.getElementById('editEmail').value = userData.email;
     document.getElementById('editPhone').value = userData.phone;
     document.getElementById('editBalanceInput').value = userData.balance.toFixed(2);
+    document.getElementById('editRucInput').value = userData.ruc;
     
-    // Render movements if visible
     if (movementsVisible) {
       renderMovements();
     }
@@ -1646,18 +2184,13 @@
     notification.innerHTML = `<strong>${title}</strong><br>${message}`;
     
     container.appendChild(notification);
-    
-    // Trigger animation
     setTimeout(() => notification.classList.add('show'), 10);
-    
-    // Remove after 3 seconds
     setTimeout(() => {
       notification.classList.remove('show');
       setTimeout(() => notification.remove(), 300);
     }, 3000);
   }
 
-  // ✅ FUNCIÓN PARA REPRODUCIR AUDIO DE NOTIFICACIÓN
   function playNotificationSound() {
     const audio = document.getElementById('notificationSound');
     if (audio) {
@@ -1670,11 +2203,8 @@
   function toggleMenu() {
     const sidebar = document.getElementById('menuSidebar');
     const overlay = document.getElementById('menuOverlay');
-    
     sidebar.classList.toggle('active');
     overlay.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open
     document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
   }
 
@@ -1688,7 +2218,6 @@
     document.getElementById(modalId).classList.remove('active');
   }
 
-  // Close modals on outside click
   document.querySelectorAll('.modal-screen').forEach(modal => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -1702,7 +2231,6 @@
     userData.balanceVisible = !userData.balanceVisible;
     saveData();
     updateBalanceDisplay();
-    
     const label = document.getElementById('balanceLabel');
     if (userData.balanceVisible) {
       label.textContent = 'Mostrar saldo';
@@ -1716,7 +2244,7 @@
   function updateBalanceDisplay() {
     const amountEl = document.getElementById('balanceAmount');
     if (userData.balanceVisible) {
-      amountEl.textContent = 'ㅤㅤㅤ';
+      amountEl.textContent = 'ㅤ';
     } else {
       amountEl.textContent = 'S/ ' + userData.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -1726,14 +2254,11 @@
   function toggleMovements() {
     const list = document.getElementById('movementsList');
     const arrow = document.getElementById('movementsArrow');
-    
     movementsVisible = !movementsVisible;
-    
     if (movementsVisible) {
       list.classList.add('active');
       arrow.classList.add('active');
       renderMovements();
-      showNotification('Movimientos', `Tienes ${movements.length} movimientos`, 'info');
     } else {
       list.classList.remove('active');
       arrow.classList.remove('active');
@@ -1742,14 +2267,12 @@
 
   function renderMovements() {
     const container = document.getElementById('movementsList');
-    
     if (movements.length === 0) {
       container.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 24px 16px; font-size: 0.9em;">No tienes movimientos aún</div>';
       return;
     }
-    
-    container.innerHTML = movements.map(m => `
-      <div class="movement-item">
+    container.innerHTML = movements.map((m, index) => `
+      <div class="movement-item" onclick="showTransactionReceipt(movements[${index}])">
         <div class="movement-icon"><i class="fas fa-paper-plane"></i></div>
         <div class="movement-info">
           <div class="movement-name">${m.name}</div>
@@ -1760,22 +2283,59 @@
     `).join('');
   }
 
+  function showTransactionReceipt(movement) {
+    document.getElementById('receiptAmount').textContent = parseFloat(movement.amount).toFixed(2);
+    document.getElementById('receiptName').textContent = movement.name;
+    document.getElementById('receiptPhone').textContent = movement.phone || '*** *** ***';
+    document.getElementById('receiptOp').textContent = movement.operationId || Math.floor(Math.random() * 90000000 + 10000000);
+    
+    document.getElementById('receiptCode1').textContent = Math.floor(Math.random() * 10);
+    document.getElementById('receiptCode2').textContent = Math.floor(Math.random() * 10);
+    document.getElementById('receiptCode3').textContent = Math.floor(Math.random() * 10);
+    
+    const dateObj = new Date(movement.timestamp || Date.now());
+    const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    const month = months[dateObj.getMonth()];
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const hour = dateObj.getHours();
+    const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+    const ampm = hour >= 12 ? 'p.m.' : 'a.m.';
+    const hour12 = hour % 12 || 12;
+    
+    document.getElementById('receiptDate').textContent = `${day} ${month}. ${year}`;
+    document.getElementById('receiptTime').textContent = `${hour12}:${minutes} ${ampm}`;
+    
+    document.getElementById('receiptContainer').classList.add('active');
+  }
+
+  function closeReceipt() {
+    document.getElementById('receiptContainer').classList.remove('active');
+  }
+
+  function clearHistory() {
+    movements = [];
+    saveData();
+    closeModal('clearHistoryModal');
+    if (movementsVisible) {
+      renderMovements();
+    }
+    showNotification('✅ Historial borrado', 'Todos los movimientos han sido eliminados', 'success');
+  }
+
   // ===== QR SCAN =====
   function startScan() {
     document.getElementById('scanScreen').classList.add('active');
     showNotification('Escaneando QR', 'Apunta al código QR', 'info');
-    
     setTimeout(() => {
       closeScan();
       const amount = (Math.random() * 60 + 10).toFixed(2);
       showSparkles();
-      
       setTimeout(() => {
         userData.balance -= parseFloat(amount);
         if (userData.balance < 0) userData.balance = 0;
         saveData();
         updateUI();
-        
         addMovement('Pago QR realizado', '*** *** 777', amount);
         showNotification('✅ Pago realizado', `Monto: S/ ${amount}`, 'success');
       }, 400);
@@ -1801,23 +2361,19 @@
       showNotification('⚠️ Error', 'Ingresa un número válido (9 dígitos)', 'error');
       return;
     }
-    
     if (isNaN(amount) || amount <= 0) {
       showNotification('⚠️ Error', 'Ingresa un monto válido', 'error');
       return;
     }
-    
     if (amount > userData.balance) {
       showNotification('⚠️ Saldo insuficiente', `Tu saldo es S/ ${userData.balance.toFixed(2)}`, 'error');
       return;
     }
     
-    // Process payment
     userData.balance -= amount;
     saveData();
     updateUI();
     closeModal('sendModal');
-    
     showConfirm(phone, name, amount.toFixed(2));
   }
 
@@ -1827,12 +2383,10 @@
     document.getElementById('confirmPhone').textContent = '*** *** ' + phone.slice(-3);
     document.getElementById('confirmOp').textContent = Math.floor(Math.random() * 90000000 + 10000000);
     
-    // Generate random security code
     document.getElementById('code1').textContent = Math.floor(Math.random() * 10);
     document.getElementById('code2').textContent = Math.floor(Math.random() * 10);
     document.getElementById('code3').textContent = Math.floor(Math.random() * 10);
     
-    // Set date and time
     const now = new Date();
     const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
     const month = months[now.getMonth()];
@@ -1846,15 +2400,11 @@
     document.getElementById('confirmDate').textContent = `${day} ${month}. ${year}`;
     document.getElementById('confirmTime').textContent = `${hour12}:${minutes} ${ampm}`;
     
-    // Show confirmation screen
     document.getElementById('confirmContainer').classList.add('active');
     showSparkles();
-    
-    // Add to movements
     addMovement(name, phone, amount);
   }
 
-  // ✅ FUNCIÓN PARA CERRAR PANTALLA DE CONFIRMACIÓN Y VOLVER AL INICIO
   function closeConfirm() {
     document.getElementById('confirmContainer').classList.remove('active');
   }
@@ -1862,11 +2412,8 @@
   function addMovement(name, phone, amount) {
     const now = new Date();
     const dateStr = now.toLocaleDateString('es-PE', { 
-      day: '2-digit', 
-      month: 'short', 
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
     });
     
     const movement = {
@@ -1874,48 +2421,38 @@
       phone: '*** *** ' + phone.slice(-3),
       amount: parseFloat(amount).toFixed(2),
       date: dateStr,
-      timestamp: now.getTime()
+      timestamp: now.getTime(),
+      operationId: Math.floor(Math.random() * 90000000 + 10000000)
     };
     
     movements.unshift(movement);
     if (movements.length > 50) movements.pop();
-    
     saveData();
-    
-    if (movementsVisible) {
-      renderMovements();
-    }
+    if (movementsVisible) renderMovements();
   }
 
   // ===== PROFILE FUNCTIONS =====
   function handlePhotoUpload(event) {
     const file = event.target.files[0];
-    
     if (!file) return;
-    
     if (!file.type.match('image.*')) {
       showNotification('⚠️ Error', 'Por favor selecciona una imagen válida', 'error');
       return;
     }
-    
     if (file.size > 2 * 1024 * 1024) {
       showNotification('⚠️ Archivo grande', 'La imagen debe pesar menos de 2MB', 'error');
       return;
     }
-    
     const reader = new FileReader();
-    
     reader.onload = function(e) {
       userData.photo = e.target.result;
       saveData();
       updateUI();
       showNotification('✅ Foto actualizada', 'Tu foto de perfil ha sido cambiada', 'success');
     };
-    
     reader.onerror = function() {
       showNotification('⚠️ Error', 'No se pudo cargar la imagen', 'error');
     };
-    
     reader.readAsDataURL(file);
     event.target.value = '';
   }
@@ -1930,7 +2467,6 @@
       showNotification('⚠️ Campos incompletos', 'Completa todos los campos', 'error');
       return;
     }
-    
     if (!email.includes('@') || !email.includes('.')) {
       showNotification('⚠️ Email inválido', 'Ingresa un email válido', 'error');
       return;
@@ -1940,22 +2476,32 @@
     userData.nickname = nickname;
     userData.email = email;
     userData.phone = phone;
-    
     saveData();
     updateUI();
     closeModal('profileModal');
     showNotification('✅ Perfil actualizado', 'Tus cambios han sido guardados', 'success');
   }
 
-  // ===== BALANCE EDIT =====
+  // ===== RUC FUNCTION =====
+  function saveRuc() {
+    const newRuc = document.getElementById('editRucInput').value.trim();
+    if (newRuc.length !== 11 || isNaN(newRuc)) {
+      showNotification('⚠️ RUC inválido', 'El RUC debe tener 11 dígitos numéricos', 'error');
+      return;
+    }
+    userData.ruc = newRuc;
+    saveData();
+    updateUI();
+    closeModal('editRucModal');
+    showNotification('✅ RUC actualizado', `Nuevo RUC: ${newRuc}`, 'success');
+  }
+
   function saveBalance() {
     const newBalance = parseFloat(document.getElementById('editBalanceInput').value);
-    
     if (isNaN(newBalance) || newBalance < 0) {
       showNotification('⚠️ Saldo inválido', 'Ingresa un monto válido', 'error');
       return;
     }
-    
     userData.balance = newBalance;
     saveData();
     updateUI();
@@ -1968,7 +2514,6 @@
     const container = document.getElementById('sparkles');
     container.classList.add('active');
     container.innerHTML = '';
-    
     const count = 25;
     for (let i = 0; i < count; i++) {
       setTimeout(() => {
@@ -1981,37 +2526,19 @@
         spark.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
         spark.style.opacity = Math.random() * 0.5 + 0.5;
         container.appendChild(spark);
-        
         setTimeout(() => spark.remove(), 2500);
       }, i * 50);
     }
-    
     setTimeout(() => container.classList.remove('active'), 2800);
   }
 
-  // ===== CAROUSEL AUTO-SCROLL =====
+  // ===== CAROUSEL =====
   const carousel = document.getElementById('mainCarousel');
   let scrollPos = 0;
   setInterval(() => {
     scrollPos = (scrollPos + carousel.offsetWidth) % (carousel.offsetWidth * 4);
     carousel.scrollTo({ left: scrollPos, behavior: 'smooth' });
   }, 4000);
-
-  // ===== INITIALIZATION - ✅ ELIMINADA BIENVENIDA QUE SE VEÍA MAL =====
-  window.addEventListener('load', () => {
-    loadData();
-    // ✅ Welcome notification removed as requested
-  });
-
-  // Prevent zoom on inputs
-  document.querySelectorAll('input').forEach(input => {
-    input.addEventListener('focus', function() {
-      document.body.style.overflow = 'hidden';
-    });
-    input.addEventListener('blur', function() {
-      document.body.style.overflow = '';
-    });
-  });
 </script>
 
 </body>
