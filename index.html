@@ -67,177 +67,6 @@
       overflow: hidden;
     }
 
-    /* LOGIN SCREEN - AJUSTADO PARA CELULAR */
-    .login-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      height: 100dvh;
-      background: linear-gradient(180deg, var(--yape-purple) 0%, var(--yape-purple) 55%, var(--white) 55%, var(--white) 100%);
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: calc(40px + var(--safe-area-top)) 16px 16px;
-    }
-
-    .login-qr-container {
-      background: white;
-      padding: 12px;
-      border-radius: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-
-    .login-qr {
-      width: 160px;
-      height: 160px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .login-options {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .login-option {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      padding: 10px 12px;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      transition: all 0.2s;
-      min-width: 70px;
-    }
-
-    .login-option:active {
-      transform: scale(0.95);
-      background: rgba(255,255,255,0.25);
-    }
-
-    .login-option i {
-      font-size: 1.3em;
-      color: white;
-    }
-
-    .login-option span {
-      color: white;
-      font-size: 0.65em;
-      text-align: center;
-      font-weight: 600;
-      line-height: 1.1;
-    }
-
-    .login-keypad-container {
-      background: white;
-      border-radius: 24px 24px 0 0;
-      padding: 28px 16px calc(16px + var(--safe-area-bottom));
-      flex: 1;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
-    }
-
-    .login-title {
-      font-size: 1.1em;
-      color: var(--yape-purple);
-      font-weight: 600;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .login-pin-display {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 28px;
-      justify-content: center;
-    }
-
-    .pin-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--bg-gray);
-      border: 2px solid var(--yape-purple);
-      transition: all 0.2s;
-    }
-
-    .pin-dot.filled {
-      background: var(--yape-purple);
-    }
-
-    .pin-dot.error {
-      background: #ef4444;
-      border-color: #ef4444;
-      animation: shake 0.4s;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
-    }
-
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      width: 100%;
-      max-width: 280px;
-    }
-
-    .keypad-btn {
-      aspect-ratio: 1.4;
-      background: var(--bg-gray);
-      border: none;
-      border-radius: 10px;
-      font-size: 1.3em;
-      font-weight: 500;
-      color: var(--text);
-      cursor: pointer;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .keypad-btn:active {
-      background: var(--yape-purple);
-      color: white;
-      transform: scale(0.95);
-    }
-
-    .keypad-btn.fingerprint {
-      font-size: 1.1em;
-    }
-
-    .keypad-btn.clear {
-      font-size: 0.9em;
-    }
-
-    .keypad-btn.empty {
-      background: transparent;
-      cursor: default;
-    }
-
-    .keypad-btn.empty:active {
-      background: transparent;
-      transform: none;
-    }
-
     /* HEADER - MORADO */
     .top-bar {
       display: flex;
@@ -307,7 +136,7 @@
       cursor: pointer;
     }
 
-    /* MENU SIDEBAR - ACTUALIZADO */
+    /* MENU SIDEBAR */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -509,6 +338,11 @@
       font-weight: 600;
       color: var(--text);
       text-align: right;
+    }
+
+    .menu-info-value.editable {
+      color: var(--yape-purple);
+      cursor: pointer;
     }
 
     .menu-footer-section {
@@ -1442,56 +1276,7 @@
 <!-- AUDIO PARA NOTIFICACIÓN -->
 <audio id="notificationSound" src="https://github.com/BerMatMods/PROYECTO/raw/refs/heads/main/Audio/Audio%20cuando%20te%20yapean.mp3" preload="auto"></audio>
 
-<!-- LOGIN SCREEN -->
-<div class="login-screen" id="loginScreen">
-  <div class="login-qr-container">
-    <img src="https://raw.githubusercontent.com/BerMatMods/PROYECTO/main/Anuncios/QR%20logo.png" alt="QR Yape" class="login-qr" />
-  </div>
-  
-  <div class="login-options">
-    <div class="login-option" onclick="showForgotPassword()">
-      <i class="fas fa-lock"></i>
-      <span>Olvido de clave</span>
-    </div>
-    <div class="login-option" onclick="showChangeNumber()">
-      <i class="fas fa-mobile-alt"></i>
-      <span>Cambio de número</span>
-    </div>
-    <div class="login-option" onclick="showHelp()">
-      <i class="fas fa-headset"></i>
-      <span>Ayuda</span>
-    </div>
-  </div>
-  
-  <div class="login-keypad-container">
-    <div class="login-title">Ingresa tu clave</div>
-    <div class="login-pin-display" id="pinDisplay">
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-    </div>
-    
-    <div class="keypad">
-      <button class="keypad-btn" onclick="addPinDigit('2')">2</button>
-      <button class="keypad-btn" onclick="addPinDigit('3')">3</button>
-      <button class="keypad-btn" onclick="addPinDigit('4')">4</button>
-      <button class="keypad-btn" onclick="addPinDigit('6')">6</button>
-      <button class="keypad-btn" onclick="addPinDigit('0')">0</button>
-      <button class="keypad-btn" onclick="addPinDigit('9')">9</button>
-      <button class="keypad-btn" onclick="addPinDigit('8')">8</button>
-      <button class="keypad-btn" onclick="addPinDigit('1')">1</button>
-      <button class="keypad-btn" onclick="addPinDigit('5')">5</button>
-      <button class="keypad-btn fingerprint"><i class="fas fa-fingerprint"></i></button>
-      <button class="keypad-btn" onclick="addPinDigit('7')">7</button>
-      <button class="keypad-btn clear" onclick="clearPinDigit()"><i class="fas fa-backspace"></i></button>
-    </div>
-  </div>
-</div>
-
-<div class="container" id="mainContainer" style="display: none;">
+<div class="container">
 
   <!-- Header -->
   <div class="top-bar">
@@ -1506,14 +1291,14 @@
     </div>
     <div class="header-icons">
       <i class="fas fa-headset" onclick="showNotification('Soporte', 'Chatea con nosotros', 'info')"></i>
-      <i class="fas fa-bell" onclick="playNotificationSound(); showNotification('Notificaciones', '𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞-', 'info')"></i>
+      <i class="fas fa-bell" onclick="playNotificationSound(); showNotification('Notificaciones', '𖤍𝐁𝐞𝐫𝐌𝐭_𝐂𝐨𝐝𝐞', 'info')"></i>
     </div>
   </div>
 
   <!-- Menu Overlay -->
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
   
-  <!-- Menu Sidebar - ACTUALIZADO -->
+  <!-- Menu Sidebar -->
   <div class="menu-sidebar" id="menuSidebar">
     <div class="menu-header">
       <div class="menu-header-top">
@@ -1534,7 +1319,7 @@
         <img src="https://ui-avatars.com/api/?name=AnthZz+Berrocal&background=742384&color=fff" class="menu-profile-pic" id="menuProfilePic" alt="Perfil" />
         <div class="menu-profile-info">
           <div class="menu-profile-name" id="menuUserName">AnthZz Berrocal</div>
-          <div class="menu-profile-nickname" id="menuUserNickname">𖤍_𝐂𝐨𝐝</div>
+          <div class="menu-profile-nickname" id="menuUserNickname">𖤍𝐁𝐞𝐫𝐌𝐭_𝐂𝐨𝐝𖤍</div>
         </div>
       </div>
     </div>
@@ -1547,15 +1332,15 @@
         <div class="label">Mis datos</div>
         <i class="fas fa-chevron-right arrow"></i>
       </div>
-      <div class="menu-item" onclick="showBlockedFeature(); toggleMenu();">
-        <i class="fas fa-lock"></i>
-        <div class="label">Cambiar mi clave</div>
-        <i class="fas fa-chevron-right arrow"></i>
-      </div>
       <div class="menu-item" onclick="openModal('editBalanceModal'); toggleMenu();">
         <i class="fas fa-wallet"></i>
         <div class="label">Editar Saldo</div>
-        <div class="value" style="font-weight: 600; color: var(--yape-purple);" id="menuBalance">S/ 666.66</div>
+        <div class="value" id="menuBalanceDisplay">S/ 666.66</div>
+      </div>
+      <div class="menu-item" onclick="showNotification('Cambiar clave', 'Función próximamente', 'info'); toggleMenu();">
+        <i class="fas fa-lock"></i>
+        <div class="label">Cambiar mi clave</div>
+        <i class="fas fa-chevron-right arrow"></i>
       </div>
       <div class="menu-item" onclick="showNotification('Mi QR', 'Tu código QR', 'info'); toggleMenu();">
         <i class="fas fa-qrcode"></i>
@@ -1608,11 +1393,11 @@
     <div class="menu-info-section">
       <div class="menu-info-row">
         <span class="menu-info-label">Versión Yape:</span>
-        <span class="menu-info-value" id="menuVersion">3.61.5</span>
+        <span class="menu-info-value">3.61.5</span>
       </div>
       <div class="menu-info-row">
         <span class="menu-info-label">Tipo de cuenta:</span>
-        <span class="menu-info-value" id="menuAccountType">Yape con DNI</span>
+        <span class="menu-info-value">Yape con DNI</span>
       </div>
       <div class="menu-info-row">
         <span class="menu-info-label">Banco:</span>
@@ -1620,12 +1405,16 @@
       </div>
       <div class="menu-info-row">
         <span class="menu-info-label">RUC:</span>
-        <span class="menu-info-value" id="menuRUC" onclick="openModal('editRucModal'); toggleMenu();" style="cursor: pointer; color: var(--yape-purple);">20100047218</span>
+        <span class="menu-info-value editable" id="menuRUC" onclick="openModal('editRucModal'); toggleMenu();">20100047218</span>
       </div>
     </div>
 
     <!-- Footer -->
     <div class="menu-footer-section">
+      <div class="menu-footer-item" onclick="openModal('infoModal'); toggleMenu();">
+        <i class="fas fa-info-circle"></i>
+        <div class="label">Información de la app</div>
+      </div>
       <div class="menu-footer-item" onclick="showNotification('Términos y condiciones', 'Leer términos', 'info'); toggleMenu();">
         <i class="fas fa-file-alt"></i>
         <div class="label">Términos y condiciones</div>
@@ -1859,7 +1648,7 @@
         </button>
         
         <div class="confirm-header">
-          <div class="confirm-title">Recibo de Transacción</div>
+          <div class="confirm-title">Yapeaste</div>
           <div class="confirm-amount">S/ <span id="receiptAmount">0.00</span></div>
           <div class="confirm-name" id="receiptName">Nombre</div>
           <div class="confirm-datetime">
@@ -1921,7 +1710,7 @@
       <input type="text" id="editName" value="AnthZz Berrocal" class="modal-input" />
       
       <label class="send-label">Apodo</label>
-      <input type="text" id="editNickname" value="𖤍𝐫𝐌𝐭_𝐨𖤍" class="modal-input" />
+      <input type="text" id="editNickname" value="𖤍𝐁𝐞𝐌𝐚𝐭_𝐂𝐨𝐞" class="modal-input" />
       
       <label class="send-label">Email</label>
       <input type="email" id="editEmail" value="anthzz@gmail.com" class="modal-input" />
@@ -1932,22 +1721,6 @@
       <div class="modal-buttons">
         <button class="modal-btn cancel" onclick="closeModal('profileModal')">Cancelar</button>
         <button class="modal-btn confirm" onclick="saveProfile()">Guardar Cambios</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Edit RUC Modal -->
-  <div class="modal-screen" id="editRucModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('editRucModal')"><i class="fas fa-times"></i></button>
-      <div class="modal-title">Editar RUC</div>
-      
-      <label class="send-label">Nuevo RUC</label>
-      <input type="text" id="editRucInput" value="20100047218" maxlength="11" class="modal-input" inputmode="numeric" />
-      
-      <div class="modal-buttons">
-        <button class="modal-btn cancel" onclick="closeModal('editRucModal')">Cancelar</button>
-        <button class="modal-btn confirm" onclick="saveRuc()">Actualizar RUC</button>
       </div>
     </div>
   </div>
@@ -1964,6 +1737,22 @@
       <div class="modal-buttons">
         <button class="modal-btn cancel" onclick="closeModal('editBalanceModal')">Cancelar</button>
         <button class="modal-btn confirm" onclick="saveBalance()">Actualizar Saldo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit RUC Modal -->
+  <div class="modal-screen" id="editRucModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('editRucModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-title">Editar RUC</div>
+      
+      <label class="send-label">Nuevo RUC</label>
+      <input type="text" id="editRucInput" value="20100047218" maxlength="11" class="modal-input" inputmode="numeric" />
+      
+      <div class="modal-buttons">
+        <button class="modal-btn cancel" onclick="closeModal('editRucModal')">Cancelar</button>
+        <button class="modal-btn confirm" onclick="saveRuc()">Actualizar RUC</button>
       </div>
     </div>
   </div>
@@ -1995,7 +1784,7 @@
       <div class="dev-section">
         <div class="dev-label">Desarrollado por:</div>
         <div class="dev-name">AnthZz Berrocal</div>
-        <div class="dev-handle">𖤍𝐫𝐌𝐭_𝐨</div>
+        <div class="dev-handle">𖤍𝐁𝐞𝐫𝐌𝐭_𝐂𝐨𝐝𖤍</div>
       </div>
       
       <div class="features-list">
@@ -2047,86 +1836,16 @@
 </div>
 
 <script>
-  // ===== LOGIN SYSTEM =====
-  const CORRECT_PIN = '101123';
-  let currentPin = '';
-  
-  function addPinDigit(digit) {
-    if (currentPin.length < 6) {
-      currentPin += digit;
-      updatePinDisplay();
-      
-      if (currentPin.length === 6) {
-        setTimeout(checkPin, 300);
-      }
-    }
-  }
-  
-  function clearPinDigit() {
-    if (currentPin.length > 0) {
-      currentPin = currentPin.slice(0, -1);
-      updatePinDisplay();
-    }
-  }
-  
-  function updatePinDisplay() {
-    const dots = document.querySelectorAll('.pin-dot');
-    dots.forEach((dot, index) => {
-      if (index < currentPin.length) {
-        dot.classList.add('filled');
-      } else {
-        dot.classList.remove('filled');
-      }
-      dot.classList.remove('error');
-    });
-  }
-  
-  function checkPin() {
-    if (currentPin === CORRECT_PIN) {
-      // PIN correcto - mostrar app principal
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('mainContainer').style.display = 'flex';
-      loadData();
-    } else {
-      // PIN incorrecto - mostrar error
-      const dots = document.querySelectorAll('.pin-dot');
-      dots.forEach(dot => dot.classList.add('error'));
-      
-      setTimeout(() => {
-        currentPin = '';
-        updatePinDisplay();
-      }, 500);
-      
-      showNotification('❌ Clave incorrecta', 'Intenta de nuevo', 'error');
-    }
-  }
-  
-  function showForgotPassword() {
-    showNotification('Olvido de clave', 'Esta opción está bloqueada por el desarrollador', 'info');
-  }
-  
-  function showChangeNumber() {
-    showNotification('Cambio de número', 'Esta opción está bloqueada por el desarrollador', 'info');
-  }
-  
-  function showHelp() {
-    showNotification('Ayuda', 'Contacta al desarrollador: 𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍', 'info');
-  }
-  
-  function showBlockedFeature() {
-    showNotification('⚠️ Función bloqueada', 'Esta opción está bloqueada por el desarrollador', 'error');
-  }
-
   // ===== DATA MANAGEMENT =====
   let userData = {
     name: 'AnthZz Berrocal',
-    nickname: '𖤍𝐁𝐞𝐫𝐌𝐚𝐭_𝐂𝐨𝐝𝐞𖤍',
+    nickname: '𖤍𝐁𝐞𝐫𝐌𝐭_𝐂𝐨𝐝𖤍',
     email: 'anthzzhacks@gmail.com',
     phone: '+51 987 654 321',
     photo: 'https://ui-avatars.com/api/?name=AnthZz+Berrocal&background=742384&color=fff',
     balance: 666.66,
     balanceVisible: false,
-    ruc: '875475647218'
+    ruc: '20100047218'
   };
 
   let movements = [];
@@ -2160,7 +1879,7 @@
     document.getElementById('profilePic').src = userData.photo;
     document.getElementById('menuProfilePic').src = userData.photo;
     
-    document.getElementById('menuBalance').textContent = 'S/ ' + userData.balance.toFixed(2);
+    document.getElementById('menuBalanceDisplay').textContent = 'S/ ' + userData.balance.toFixed(2);
     document.getElementById('menuRUC').textContent = userData.ruc;
     updateBalanceDisplay();
     
@@ -2244,7 +1963,7 @@
   function updateBalanceDisplay() {
     const amountEl = document.getElementById('balanceAmount');
     if (userData.balanceVisible) {
-      amountEl.textContent = 'ㅤ';
+      amountEl.textContent = 'ㅤㅤ';
     } else {
       amountEl.textContent = 'S/ ' + userData.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -2482,6 +2201,20 @@
     showNotification('✅ Perfil actualizado', 'Tus cambios han sido guardados', 'success');
   }
 
+  // ===== BALANCE FUNCTION =====
+  function saveBalance() {
+    const newBalance = parseFloat(document.getElementById('editBalanceInput').value);
+    if (isNaN(newBalance) || newBalance < 0) {
+      showNotification('⚠️ Saldo inválido', 'Ingresa un monto válido', 'error');
+      return;
+    }
+    userData.balance = newBalance;
+    saveData();
+    updateUI();
+    closeModal('editBalanceModal');
+    showNotification('✅ Saldo actualizado', `Nuevo saldo: S/ ${newBalance.toFixed(2)}`, 'success');
+  }
+
   // ===== RUC FUNCTION =====
   function saveRuc() {
     const newRuc = document.getElementById('editRucInput').value.trim();
@@ -2494,19 +2227,6 @@
     updateUI();
     closeModal('editRucModal');
     showNotification('✅ RUC actualizado', `Nuevo RUC: ${newRuc}`, 'success');
-  }
-
-  function saveBalance() {
-    const newBalance = parseFloat(document.getElementById('editBalanceInput').value);
-    if (isNaN(newBalance) || newBalance < 0) {
-      showNotification('⚠️ Saldo inválido', 'Ingresa un monto válido', 'error');
-      return;
-    }
-    userData.balance = newBalance;
-    saveData();
-    updateUI();
-    closeModal('editBalanceModal');
-    showNotification('✅ Saldo actualizado', `Nuevo saldo: S/ ${newBalance.toFixed(2)}`, 'success');
   }
 
   // ===== SPARKLES EFFECT =====
@@ -2539,6 +2259,16 @@
     scrollPos = (scrollPos + carousel.offsetWidth) % (carousel.offsetWidth * 4);
     carousel.scrollTo({ left: scrollPos, behavior: 'smooth' });
   }, 4000);
+
+  // ===== INIT =====
+  window.addEventListener('load', () => {
+    loadData();
+  });
+
+  document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('focus', function() { document.body.style.overflow = 'hidden'; });
+    input.addEventListener('blur', function() { document.body.style.overflow = ''; });
+  });
 </script>
 
 </body>
